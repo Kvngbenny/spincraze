@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spin Craze - GH₵/NRA</title>
+<link rel="stylesheet" href="spinstyle.css"/>
+</head>
+<body class="age-gate-pending">
+<div id="ageGateModal" class="modal hidden" aria-modal="true" role="dialog">
+  <div class="modal-card age-card">
+    <h3>Age verification</h3>
+    <p>Are you 18 years or older?</p>
+    <div class="age-choice-row">
+      <button class="age-choice-btn" data-age-choice="no" type="button">No, I’m below 18</button>
+      <button class="age-choice-btn selected" data-age-choice="yes" type="button">Yes, I’m 18 and above</button>
+    </div>
+    <button id="ageConfirmBtn" class="auth-submit">Continue</button>
+  </div>
+</div>
+
+<div class="top-bar">
+  <div class="brand-badge">Spin Craze</div>
+  <div class="top-actions">
+    <button id="fundWalletBtn" class="circle-btn fund-btn" aria-label="Fund wallet">+</button>
+    <button id="profileBtn" class="circle-btn profile-btn" aria-label="Account">👤</button>
+  </div>
+</div>
+
+<div class="spin-container">
+  <div class="home-header">
+    <div>
+      <span class="eyebrow">Lucky Draw</span>
+      <h1>Spin for rewards</h1>
+    </div>
+    <div class="badge-pill">GH₵/NRA</div>
+  </div>
+
+  <div class="balance-card">
+    <div class="balance-label">Balance</div>
+    <div class="balance-row"><b id="currencySym">GH₵</b> <b id="balance">0.00</b></div>
+    <small id="phoneDisplay"></small>
+    <div class="ref-box">
+      <span>Your Referral</span>
+      <b id="myRefCode" style="color:#ffd700;">-</b>
+      <small id="refLink"></small>
+    </div>
+    <div class="account-row">
+      <button id="withdrawBtn" class="secondary-btn small">Withdraw</button>
+      <button id="signOutBtn" class="secondary-btn small hidden">Sign out</button>
+    </div>
+  </div>
+
+  <div class="withdraw-box">
+    <label for="withdrawAmount">Withdrawal amount</label>
+    <div class="withdraw-control">
+      <input id="withdrawAmount" type="number" min="15" step="1" value="15" />
+      <button id="withdrawActionBtn" class="pay-btn compact">Withdraw GHC 15</button>
+    </div>
+    <small>Minimum withdrawal: GHC 15</small>
+  </div>
+
+  <div class="wheel-wrap">
+    <canvas id="wheelCanvas" width="340" height="340"></canvas>
+    <div class="wheel-center"></div>
+  </div>
+
+  <button id="spinBtn" class="spin-btn">SPIN NOW</button>
+  <div id="resultBox"></div>
+  <div style="text-align:center; margin-top:15px;">
+    <button class="copy-btn" onclick="copyRef()">📋 Copy Referral Link</button>
+  </div>
+</div>
+
+<div id="authModal" class="modal hidden" aria-modal="true" role="dialog">
+  <div class="modal-card">
+    <button class="close-modal" aria-label="Close">×</button>
+    <h3 id="authTitle">Sign up</h3>
+    <div class="auth-mode-switcher">
+      <button class="mode-btn active" data-mode="signup" type="button">Sign up</button>
+      <button class="mode-btn" data-mode="signin" type="button">Sign in</button>
+    </div>
+    <button class="auth-option selected" data-provider="google"><span class="icon">G</span> Continue with Google</button>
+    <button class="auth-option" data-provider="gmail"><span class="icon">@</span> Continue with Gmail</button>
+    <button class="auth-option" data-provider="phone"><span class="icon">📱</span> Continue with Phone</button>
+    <input id="signupPhone" type="text" placeholder="Enter email or phone number"/>
+    <button id="savePhoneBtn" class="auth-submit">Send OTP</button>
+  </div>
+</div>
+
+<div id="otpModal" class="modal hidden" aria-modal="true" role="dialog">
+  <div class="modal-card">
+    <button class="close-otp" aria-label="Close">×</button>
+    <h3>Verify account</h3>
+    <p id="otpTargetText" class="otp-target">Enter the code sent to your email or phone.</p>
+    <input id="otpCode" type="text" maxlength="6" inputmode="numeric" placeholder="Enter 6-digit code"/>
+    <button id="verifyOtpBtn" class="auth-submit">Confirm OTP</button>
+    <button id="resendOtpBtn" class="secondary-btn">Resend OTP</button>
+  </div>
+</div>
+
+<script src="spinscript.js"></script>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+</body>
+</html>
